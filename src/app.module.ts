@@ -7,6 +7,8 @@ import { AuthModule } from './auth/auth.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import { RoomsModule } from './rooms/rooms.module';
+import { PlaylistModule } from './playlist/playlist.module';
+import { VideosModule } from './videos/videos.module';
 
 
 @Module({
@@ -20,6 +22,8 @@ import { RoomsModule } from './rooms/rooms.module';
     UsersModule,
     AuthModule,
     RoomsModule,
+    PlaylistModule,
+    VideosModule,
     
   ],
   controllers: [AppController],
