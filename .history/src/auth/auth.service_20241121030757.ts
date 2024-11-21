@@ -25,7 +25,7 @@ export class AuthService {
                 email,
                 password: hash
             })
-           await user.save()
+            user.save()
             return user
         }
 

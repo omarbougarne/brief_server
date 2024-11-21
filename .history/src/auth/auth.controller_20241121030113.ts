@@ -12,10 +12,9 @@ export class AuthController {
         return this.authService.createUser(registerDto)
     }
 
-    @Get('/login')
-    login(@Body()loginDto: LoginDto)
-    {
-        return this.authService.signUser(loginDto)
-    
+    @Get()
+    login(@Body(LoginDto: LoginDto){
+        return this.authService.signUser(LoginDto)
+    )
     }
 }

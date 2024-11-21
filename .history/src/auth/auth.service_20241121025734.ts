@@ -17,30 +17,26 @@ export class AuthService {
         async  createUser(registerDto: RegisterDto): Promise<User>{
             const {name, displayname, password, email} = registerDto
 
-            const hash = await bcrypt.hash(password, 10)
+            const hash = bcrypt.hash(password, 10)
 
             const user = await new this.UserModel({
                 name,
                 displayname,
                 email,
-                password: hash
+                password
             })
-           await user.save()
             return user
         }
 
         async signUser(loginDto: LoginDto): Promise<User>{
             const {email, password} = loginDto;
-            const user = await this.UserModel.findOne({email})
+
             if(!email){
                 throw new UnauthorizedException ('invalid email')
             }
 
             const isPasswordMatched = await bcrypt.compare(password, user.password)
-            if(!isPasswordMatched){
-                throw new UnauthorizedException ('invalid password')
-            }
-            return user
-            
+
+            return
         }
 }
