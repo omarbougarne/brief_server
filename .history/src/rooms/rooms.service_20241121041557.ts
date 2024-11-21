@@ -14,10 +14,10 @@ export class RoomsService {
 
     async createRoom(createRoomDto: CreateRoomDto): Promise<Room>{
         const {roomName, creator} = createRoomDto
-        const user = await this.userModel.findById(creator).exec()
+        const user = await this.userModel.findById(createRoomDto.creator).exec()
         const room = await new this.roomModel({
             roomName,
-            creator: user._id
+            user: creator
         })
         await room.save()
         return room
