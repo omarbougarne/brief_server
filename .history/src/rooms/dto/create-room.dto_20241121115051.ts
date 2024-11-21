@@ -4,7 +4,7 @@ export class CreateRoomDto{
 
     @IsString()
     roomName: string;
-    
+
     @IsMongoId()
     creator: string;
 

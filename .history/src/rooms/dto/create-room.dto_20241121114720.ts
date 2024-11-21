@@ -4,12 +4,9 @@ export class CreateRoomDto{
 
     @IsString()
     roomName: string;
-    
-    @IsMongoId()
-    creator: string;
 
     @IsMongoId()
-    playlist: string;
+    creator: string;
 
     // @IsOptional()
     // participant: string[]

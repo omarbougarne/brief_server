@@ -17,13 +17,13 @@ export class RoomsService {
     async createRoom(createRoomDto: CreateRoomDto): Promise<Room>{
         const {roomName, creator, playlist} = createRoomDto
         const user = await this.userModel.findById(creator).exec()
-        const playlistObj = await this.playlistModel.findById(playlist).exec()
+        const playlit = await this.playlistModel.findById(playlist).exec()
         const room =  new this.roomModel({
             roomName,
             creator: user._id,
-            playlist: playlistObj._id,
+            playlist,
         })
-        
+
         await room.save()
         return room
     }
