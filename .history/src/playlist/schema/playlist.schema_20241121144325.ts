@@ -8,7 +8,7 @@ export class Playlist{
     @Prop()
     playlistName: string;
     
-    @Prop({type: Types.ObjectId, required: false, ref:'Video'})
+    @Prop({type: Types.ObjectId, required: true, ref:'Video'})
     video: Types.Array<Video>;
     
 }
