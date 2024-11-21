@@ -13,8 +13,8 @@ export class Room{
     @Prop({type: Types.ObjectId, ref: 'User', required: true})
     creator: User;
 
-    // @Prop({type: Types.ObjectId, ref:'User'})
-    // participants: string[]
+    @Prop({type: Types.ObjectId, ref:'User'})
+    participants: string[]
 }
 
 export const RoomSchema = SchemaFactory.createForClass(Room);

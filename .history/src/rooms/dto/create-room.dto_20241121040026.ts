@@ -9,6 +9,6 @@ export class CreateRoomDto{
     
     creator: string;
 
-    // @IsOptional()
-    // participant: string[]
+    @IsOptional()
+    participant: string[]
 }
