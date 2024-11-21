@@ -6,7 +6,7 @@ import { AuthService } from './auth.service';
 export class AuthController {
     constructor( private authService: AuthService){}
 
-    @Post('/register')
+    @Post('/login')
     register(@Body() registerDto: RegisterDto){
         return this.authService.createUser(registerDto)
     }
