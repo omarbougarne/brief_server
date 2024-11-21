@@ -12,4 +12,4 @@ export class Playlist{
     
 }
 
-export const playlistSchema = SchemaFactory.createForClass(Playlist)
+export const playlistModel = SchemaFactory.createForClass(Playlist)

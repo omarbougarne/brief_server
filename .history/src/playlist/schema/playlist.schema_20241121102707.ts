@@ -1,4 +1,4 @@
-import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { Prop, Schema } from "@nestjs/mongoose";
 import { Types } from "mongoose";
 
 @Schema({timestamps: true})
@@ -11,5 +11,3 @@ export class Playlist{
     video: Types.ObjectId;
     
 }
-
-export const playlistSchema = SchemaFactory.createForClass(Playlist)
