@@ -17,7 +17,6 @@ export class Room{
     playlist: Types.ObjectId
 
     
-    
     // @Prop({type: Types.ObjectId, ref:'User'})
     // participants: string[]
 }

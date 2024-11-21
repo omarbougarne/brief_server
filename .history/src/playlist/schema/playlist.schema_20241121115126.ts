@@ -6,7 +6,7 @@ import { Video } from "src/videos/schema/video.schema";
 export class Playlist{
 
     @Prop()
-    playlistName: string;
+    name: string;
     
     @Prop({type: Types.ObjectId, required: true, ref:'Video'})
     video: Types.Array<Video>;

@@ -23,7 +23,7 @@ export class RoomsService {
             creator: user._id,
             playlist: playlistObj._id,
         })
-        
+
         await room.save()
         return room
     }
