@@ -21,11 +21,9 @@ export class RoomsService {
         
         const user = await this.userModel.findById(userId).exec()
         console.log(userId)
-
-        const playlistName = `Play list name is ${roomName}`
         const playlist = new this.playlistModel({
-            playlistName,
-            video:  [],
+            playlistNAme: createPlaylistDto.playlistName,
+            video: createPlaylistDto.video || [],
         })
         await playlist.save();
 
@@ -36,10 +34,13 @@ export class RoomsService {
         })
         await room.save()
        
-        
+        const list =  new this.playlistModel({
+            playlistName: playlistObj.playlistName,
+            video: []
+        })
+        await list.save()
 
         const populateRoom  = await this.roomModel.findById(room._id).populate('playlist').exec();
-        
         await populateRoom.save()
         return populateRoom;
     }

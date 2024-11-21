@@ -5,7 +5,6 @@ import { Room } from './schema/rooms.schema';
 import { User } from 'src/users/schema/user.schema';
 import { CreateRoomDto } from './dto/create-room.dto';
 import { Playlist } from 'src/playlist/schema/playlist.schema';
-import { CreatePlaylistDto } from 'src/playlist/dto/createPlaylist.dto';
 
 @Injectable()
 export class RoomsService {
@@ -15,31 +14,26 @@ export class RoomsService {
         @InjectModel(Playlist.name) private playlistModel: Model<Playlist>
     ){}
 
-    async createRoom(createRoomDto: CreateRoomDto, createPlaylistDto: CreatePlaylistDto): Promise<Room>{
-        const {roomName, creator} = createRoomDto
+    async createRoom(createRoomDto: CreateRoomDto): Promise<Room>{
+        const {roomName, creator, playlist} = createRoomDto
         const userId = createRoomDto.creator;
-        
-        const user = await this.userModel.findById(userId).exec()
         console.log(userId)
-
-        const playlistName = `Play list name is ${roomName}`
-        const playlist = new this.playlistModel({
-            playlistName,
-            video:  [],
-        })
-        await playlist.save();
-
-        const room = new this.roomModel({
+        const user = await this.userModel.findById(userId).exec()
+        const playlistId = createRoomDto.creator;
+        console.log(playlistId)
+        const playlistObj = await this.playlistModel.findById(playlistId).exec()
+        const room =  new this.roomModel({
             roomName,
             creator: user._id,
-            playlist: playlist._id,
+            playlist: playlistObj._id,
         })
-        await room.save()
-       
-        
+        const list =  new this.playlistModel({
+            playlistName: playlistObj.playlistName,
+            video: []
+        })
+        await list.save()
 
         const populateRoom  = await this.roomModel.findById(room._id).populate('playlist').exec();
-        
         await populateRoom.save()
         return populateRoom;
     }

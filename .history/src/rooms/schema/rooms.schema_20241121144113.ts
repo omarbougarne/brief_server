@@ -13,8 +13,8 @@ export class Room{
     @Prop({type: Types.ObjectId, ref: 'User', required: true})
     creator: User;
 
-    @Prop({type: Types.ObjectId, ref: 'Playlist', required: false})
-    playlist: Types.ObjectId
+    // @Prop({type: Types.ObjectId, ref: 'Playlist', required: true})
+    // playlist: Types.ObjectId
 
     
     

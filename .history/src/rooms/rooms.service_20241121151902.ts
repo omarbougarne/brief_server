@@ -25,7 +25,7 @@ export class RoomsService {
         const playlistName = `Play list name is ${roomName}`
         const playlist = new this.playlistModel({
             playlistName,
-            video:  [],
+            video: createPlaylistDto.video || [],
         })
         await playlist.save();
 
