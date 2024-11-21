@@ -11,7 +11,7 @@ export class RoomsService {
     constructor(
         @InjectModel(Room.name) private roomModel: Model<Room>,
         @InjectModel(User.name) private userModel: Model<User>,
-        @InjectModel(Playlist.name) private playlistModel: Model<Playlist>
+        @InjectModel(Playlist.name) private playlistModel: Models<Playlist>
     ){}
 
     async createRoom(createRoomDto: CreateRoomDto): Promise<Room>{
