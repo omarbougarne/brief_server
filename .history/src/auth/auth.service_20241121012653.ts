@@ -18,12 +18,11 @@ export class AuthService {
 
             const hash = bcrypt.hash(password, 10)
 
-            const user = await new this.UserModel({
+            const user = new this.UserModel({
                 name,
                 displayname,
                 email,
                 password
             })
-            return user
         }
 }

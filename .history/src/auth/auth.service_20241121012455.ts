@@ -14,16 +14,8 @@ export class AuthService {
         ){}
 
         async  createUser(registerDto: RegisterDto): Promise<User>{
-            const {name, displayname, password, email} = registerDto
+            const {name, password, email} = registerDto
 
             const hash = bcrypt.hash(password, 10)
-
-            const user = await new this.UserModel({
-                name,
-                displayname,
-                email,
-                password
-            })
-            return user
         }
 }
