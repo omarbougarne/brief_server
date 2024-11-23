@@ -46,7 +46,7 @@ export class RoomsService {
             .exec();
 
         
-        
+        await this.sendEmailToParticipants(populatedRoom);
 
         return populatedRoom;
     }
