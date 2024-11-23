@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-
 import { ConfigService } from '@nestjs/config';
 import * as nodemailer from 'nodemailer'
 import {SendEmailDto} from '../mailer/dto/send-mail.dto'
@@ -22,30 +21,28 @@ export class MailerService {
     }
 
     async sendEmail(dto: SendEmailDto){
-        const { from, recipients, subject, html } = dto;
+        const {from, recipient, subject, html, placeholderReplacements} = dto;
 
         const transport = this.mailTransport();
 
         const options: MailOptions = {
             from: from ?? {
-                user: this.configService.get<string>('APP_NAME'),
+                user: this.configService.get<string>(' APP_NAME'),
                 pass: this.configService.get<string>('DEFAULT_MAIL_FROM'),
               },
-              to: recipients,
+              to: recipient,
               subject,
               html
         }
 
         try{
-            const result = await transport.sendMail(options);
+            const result = await transport.sendEmail(options)
             return result;
         }catch (err){
             console.log('Error', err)
-            throw err
         }
     }
  
 
 
 }
-
