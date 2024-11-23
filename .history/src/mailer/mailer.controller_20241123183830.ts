@@ -1,7 +1,8 @@
-
+<<<<<<< HEAD
 import { Controller, Post } from '@nestjs/common';
 import { MailerService } from './mailer.service';
 import { SendEmailDto } from './dto/send-mail.dto';
+=======
 
 
 @Controller('mailer')
@@ -18,6 +19,5 @@ export class MailerController {
       subject: 'Lucky',
       html: '<h1>hiiiiiii</h1>',
     };
-    return await this.mailerService.sendEmail(dto)
-  }
+    return await this.mailerService.sendEmail(dto);
 }

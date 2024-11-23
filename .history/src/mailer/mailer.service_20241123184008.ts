@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-
 import { ConfigService } from '@nestjs/config';
 import * as nodemailer from 'nodemailer'
 import {SendEmailDto} from '../mailer/dto/send-mail.dto'
@@ -31,7 +30,7 @@ export class MailerService {
                 user: this.configService.get<string>('APP_NAME'),
                 pass: this.configService.get<string>('DEFAULT_MAIL_FROM'),
               },
-              to: recipients.map((recipient) => recipient.address).join(','),
+              to: recipients,
               subject,
               html
         }
@@ -48,4 +47,3 @@ export class MailerService {
 
 
 }
-
