@@ -15,13 +15,14 @@ export class RoomsService {
         @InjectModel(Playlist.name) private playlistModel: Model<Playlist>
     ){}
 
-    async createRoom(createRoomDto: CreateRoomDto): Promise<Room>{
-        const {roomName} = createRoomDto
+    async createRoom(createRoomDto: CreateRoomDto, createPlaylistDto: CreatePlaylistDto): Promise<Room>{
+        const {roomName, creator} = createRoomDto
         const userId = createRoomDto.creator;
         
         const user = await this.userModel.findById(userId).exec()
-        // console.log(userId)
+        console.log(userId)
         
+
         const users = await this.userModel.find()
 
         const playlistName = `Play list name is ${roomName}`
@@ -35,11 +36,12 @@ export class RoomsService {
             roomName,
             creator: user._id,
             playlist: playlist._id,
-            participants: []
 
         })
         await room.save();
        
+        
+
         const populateRoom  = await this.roomModel.findById(room._id).populate('playlist').exec();
         
         await populateRoom.save()

@@ -9,6 +9,7 @@ import { ConfigModule } from '@nestjs/config';
 import { RoomsModule } from './rooms/rooms.module';
 import { PlaylistModule } from './playlist/playlist.module';
 import { VideosModule } from './videos/videos.module';
+import { MailerModule } from './mailer/mailer.module';
 
 
 @Module({
@@ -24,6 +25,7 @@ import { VideosModule } from './videos/videos.module';
     RoomsModule,
     PlaylistModule,
     VideosModule,
+    MailerModule,
     
   ],
   controllers: [AppController],

@@ -7,12 +7,12 @@ import { UserDto } from './dto/user.dto';
 @Injectable()
 export class UsersService {
 
-    // constructor(@InjectModel(User.name) private userModel: Model<User>){}
+    constructor(@InjectModel(User.name) private userModel: Model<User>){}
 
-    // async fetchUsers(): Promise<User[]>{
+    async fetchUsers(): Promise<User[]>{
 
-    //     const users = await this.userModel.find()
-    //     return users
-    // }
+        const users = await this.userModel.find()
+        return users
+    }
 
 }
