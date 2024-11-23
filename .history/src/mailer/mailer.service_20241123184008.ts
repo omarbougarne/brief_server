@@ -30,7 +30,7 @@ export class MailerService {
                 user: this.configService.get<string>('APP_NAME'),
                 pass: this.configService.get<string>('DEFAULT_MAIL_FROM'),
               },
-              to: recipients.map((recipient) => recipient.address).join(','),
+              to: recipients,
               subject,
               html
         }
